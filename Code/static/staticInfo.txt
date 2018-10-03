@@ -1,0 +1,2 @@
+CSS elements, including .jpg/.png/.gif. <br>
+All MaterializeCSS stuff goes here
