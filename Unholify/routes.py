@@ -46,11 +46,10 @@ def registerAbove():
     form = RegistrationFormAbove()
     if form.validate_on_submit():
         print('TF')
-
-        aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0)
-
+        aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_family=form.above_family.data,above_colleague=form.above_colleague.data,above_drunktimes=0)
         db.session.add(aboveUser)
         db.session.commit()
+        return redirect(url_for('login'))
     else: print('halaaa 1')
     return render_template('registerAbove.html', form=form)
 
@@ -88,9 +87,8 @@ def account():
     form = UpdateAccountFormAboveUser()
     aboveUser = AboveUser.query.filter_by(user_id=current_user.id).first()
     if form.validate_on_submit():
-        current_user.email = form.email.data
+
         aboveUser.above_type=form.above_type.data
-        aboveUser.above_address=form.above_address.data
         aboveUser.above_friend=form.above_friend.data
         aboveUser.above_family=form.above_family.data
         aboveUser.above_colleague=form.above_colleague.data
@@ -98,9 +96,8 @@ def account():
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
-        form.email.data=current_user.email
+
         form.above_type.data=aboveUser.above_type
-        form.above_address.data=aboveUser.above_address
         form.above_friend.data=aboveUser.above_friend
         form.above_family.data=aboveUser.above_family
         form.above_colleague.data=aboveUser.above_colleague
