@@ -42,4 +42,4 @@ class UpdateAccountFormAboveUser(FlaskForm):
     above_friend = StringField('Frequently Contacted Friend', validators=[DataRequired(), Length(max=120) ,Email()])
     above_family = StringField('Frequently Contacted Family Member', validators=[DataRequired(), Length(max=120) ,Email()])
     above_colleague =  StringField('Frequently Contacter Colleague', validators=[DataRequired(), Length(max=120) ,Email()])
-    above_submit = SubmitField('Sign Up')
+    submit = SubmitField('Sign Up')

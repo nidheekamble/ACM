@@ -46,18 +46,20 @@ def register():
                    s = s+a #sum of ASCIIs acts as the salt
                 hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
                 form2 = StressForm()
-                user = User(email=form.email.data, password=hashed_password, type= form.type.data, stress_level=form2.above_stress.data)
+                user = User(email=form.email.data, password=hashed_password, type= form.type.data)
                 db.session.add(user)
                 db.session.commit()
-            return redirect(url_for('stress'))
+            return redirect(url_for('login'))
     else: print('halaaaa')
     return render_template('selectForm.html', form2=form2, form=form)
 
 @app.route("/registerAbove", methods=['GET', 'POST'])
 def registerAbove():
     form = RegistrationFormAbove()
+    form2= StressForm()
     if form.validate_on_submit():
         aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0,user_id=current_user.id)
+        user=User.query.filter_by
         db.session.add(aboveUser)
         db.session.commit()
     else: print('halaaa 1')
@@ -76,7 +78,7 @@ def login():
         if (user and (user.password==now_hash)):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('account'))
+            return redirect(next_page) if next_page else redirect(url_for('stresslevel'))
         else:
             print('halaaa2')
             flash('Login Unsuccessful. Please check email and password', 'danger')
@@ -112,5 +114,20 @@ def account():
             form.above_address.data=aboveUser.above_address
             form.above_friend.data=aboveUser.above_friend
             form.above_family.data=aboveUser.above_family
-            form.above_colleague.data=aboveUser.above_colleague=
+            form.above_colleague.data=aboveUser.above_colleague
     return render_template('UpdateAccountAboveUser.html', title='Account', form=form)
+
+@app.route("/stresslevel",methods=['POST','GET'])
+@login_required
+def stresslevel():
+    form = StressForm()
+    if form.validate_on_submit()
+        current_user.stress_level=form.stress_level.data
+        db.session.commit()
+        if current_user.stress_level > 5 :
+            return redirect('severeHelp.html',title='We are with you',form=form)
+        elif current_user.stress_level > 0 :
+            return redirect('ModerateHelp.html',title='We are with you',form=form)
+        else:
+            flash('You have found your way to a stress and alcohol free life','success')
+    return render_template('stressLevel.html',title='How are you feeling today',form=form)
