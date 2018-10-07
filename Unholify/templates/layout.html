@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="shortcut icon" href="static/logo.ico">
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sidebar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='background.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='footer.css') }}">
-    <!--Import Google Icon Font-->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
+ 
     <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-	<title>Home Page</title>
+    
+<title>Home Page</title>
 </head>
 <body>
-	<div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Unholify</a>
-      </div>
-    </nav>
+  <div class = "valign-wrapper card-panel row blue-grey darken-4">
+    <span class = "white-text"> <h4 class = "center-align"> <b>Unholify </h4></span>
   </div>
+
 
   {% block content %}
 
@@ -42,34 +31,8 @@
 
 
 
-  <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer </h5>
-                <p class="grey-text text-lighten-4">Add footer content (Nidhee)</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <!--<h5 class="white-text">Links</h5>
-                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul> -->
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Unholify
-            
-            </div>
-          </div>
-  </footer>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
-  <script type="text/javascript" src="static/js/materialize.min.js"></script>
-
+      
 </body>
 </html>
