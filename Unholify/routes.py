@@ -110,26 +110,23 @@ def stresslevel():
     if form.validate_on_submit():
         current_user.stress_level=form.stress_level.data
         db.session.commit()
-        if current_user.stress_level > 5 :
-<<<<<<< HEAD
-            return redirect('severeHelp')
-        elif current_user.stress_level > 0 :
-            return redirect('moderateHelp')
-=======
-            return render_template('severeHelp.html',title='We are with you',form=form)
-        elif current_user.stress_level > 0 :
-            return render_template('ModerateHelp.html',title='We are with you',form=form)
->>>>>>> 04f354229ab0b8b9cb0a84c5e9ee36c9d97193de
+        if current_user.stress_level < 4 :
+            return redirect('congrats')
         else:
-            flash('You have found your way to a stress and alcohol free life','success')
-    return render_template('Stress.html',title='How are you feeling today',form=form)
+            return redirect('stress')
+    return render_template('stresslevel.html',title='How are you feeling today',form=form)
 
 @app.route("/severeHelp",methods=['POST','GET'])
 @login_required
 def severeHelp():
-    return redirect('severeHelp.html',title='We are with you',form=form)
+    return render_template('severeHelp.html',title='We are with you',form=form)
 
 @app.route("/ModerateHelp",methods=['POST','GET'])
 @login_required
 def moderateHelp():
-    return redirect('severeHelp.html',title='We are with you',form=form)
+    return render_template('moderateHelp.html',title='We are with you',form=form)
+
+@app.route("/stress",methods=['POST','GET'])
+@login_required
+def stress():
+    return render_template('stress.html',title='We are with you',form=form)
