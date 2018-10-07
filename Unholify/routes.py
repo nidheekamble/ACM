@@ -110,8 +110,15 @@ def stresslevel():
     if form.validate_on_submit():
         current_user.stress_level=form.stress_level.data
         db.session.commit()
+<<<<<<< HEAD
         if current_user.stress_level < 4 :
             return redirect('congrats')
+=======
+        if current_user.stress_level > 5 :
+            return redirect('severeHelp')
+        elif current_user.stress_level > 0 :
+            return redirect('moderateHelp')
+>>>>>>> 0f6112be5d6c428eb70d775d1e7e65cd1dceb11b
         else:
             return redirect('stress')
     return render_template('stresslevel.html',title='How are you feeling today',form=form)
