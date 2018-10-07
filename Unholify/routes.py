@@ -9,7 +9,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 from sqlalchemy.orm import Session
 from math import sqrt
 #from googlemaps import Client as GoogleMaps
-import requests
 from geopy.geocoders import Nominatim
 from sqlalchemy import or_ , and_
 
