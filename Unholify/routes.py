@@ -2,7 +2,7 @@ import os
 import secrets
 from Unholify import app, db
 from flask import Flask, session, escape, render_template, url_for, flash, redirect, request
-from Unholify.forms import RegistrationFormAbove,StressForm
+from Unholify.forms import RegistrationFormAbove,StressForm,UpdateAccountFormAboveUser,LoginForm
 from Unholify.models import User, AboveUser
 import hashlib #for SHA512
 from flask_login import login_user, current_user, logout_user, login_required
@@ -60,3 +60,57 @@ def registerAbove():
         aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0,user_id=current_user.id)
         db.session.add(aboveUser)
         db.session.commit()
+    else: print('halaaa 1')
+    return render_template('registerAbove.html', form=form)
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm(request.form)
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        s = 0
+        for char in (form.password.data):
+            a = ord(char)
+            s = s+a
+        now_hash = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
+        if (user and (user.password==now_hash)):
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('account'))
+        else:
+            print('halaaa2')
+            flash('Login Unsuccessful. Please check email and password', 'danger')
+            print('halaaa2')
+    else:
+        print('halaaa1')
+    return render_template('login.html', title='Login', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+@app.route("/account", methods= ['POST', 'GET'])
+@login_required
+def account():
+    if current_user.type == 'A':
+        form = UpdateAccountFormAboveUser()
+        aboveUser = AboveUser.query.filter_by(user_id=current_user.id).first()
+        if form.validate_on_submit():
+            current_user.email = form.email.data
+            aboveUser.above_type=form.above_type.data
+            aboveUser.above_address=form.above_address.data
+            aboveUser.above_friend=form.above_friend.data
+            aboveUser.above_family=form.above_family.data
+            aboveUser.above_colleague=form.above_colleague.data
+            db.session.commit()
+            flash('Your account has been updated!', 'success')
+            return redirect(url_for('account'))
+        elif request.method == 'GET':
+            form.email.data=current_user.email
+            form.above_type.data=aboveUser.above_type
+            form.above_address.data=aboveUser.above_address
+            form.above_friend.data=aboveUser.above_friend
+            form.above_family.data=aboveUser.above_family
+            form.above_colleague.data=aboveUser.above_colleague=
+    return render_template('UpdateAccountAboveUser.html', title='Account', form=form)

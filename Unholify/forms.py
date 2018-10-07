@@ -4,7 +4,7 @@ from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField, IntegerField, TextAreaField, SelectField, HiddenField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Required, NumberRange, ValidationError
-from Unholify.models import User, AboveUser, BelowUser
+from Unholify.models import User, AboveUser
 
 class SelectForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Length(max=120) ,Email()])
@@ -20,9 +20,8 @@ class SelectForm(FlaskForm):
 
 
 class RegistrationFormAbove(FlaskForm):
-
     above_choices = [('D','Occasionally a day'),('M', 'Occasionally a month'),('Y', 'Occasionally a year')]
-    above_type = SelectField('How frequently do you drink?', choices=above_choices, validators=[Required()])
+    above_type = RadioField('How frequently do you drink?', choices=above_choices, validators=[Required()])
     above_friend = StringField('Frequently Contacted Friend', validators=[DataRequired(), Length(max=120) ,Email()])
     above_family = StringField('Frequently Contacted Family Member', validators=[DataRequired(), Length(max=120) ,Email()])
     above_colleague =  StringField('Frequently Contacter Colleague', validators=[DataRequired(), Length(max=120) ,Email()])
@@ -30,3 +29,17 @@ class RegistrationFormAbove(FlaskForm):
 
 class StressForm(FlaskForm):
     above_stress=IntegerField('On the scale of 1 to 10, how stressed do you feel at the moment, 10 being the most?',validators=[DataRequired(),NumberRange(min=1, max= 10)])
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Login')
+
+class UpdateAccountFormAboveUser(FlaskForm):
+    above_choices = [('D','Occasionally a day'),('M', 'Occasionally a month'),('Y', 'Occasionally a year')]
+    above_type = SelectField('How frequently do you drink?', choices=above_choices, validators=[Required()])
+    above_friend = StringField('Frequently Contacted Friend', validators=[DataRequired(), Length(max=120) ,Email()])
+    above_family = StringField('Frequently Contacted Family Member', validators=[DataRequired(), Length(max=120) ,Email()])
+    above_colleague =  StringField('Frequently Contacter Colleague', validators=[DataRequired(), Length(max=120) ,Email()])
+    above_submit = SubmitField('Sign Up')

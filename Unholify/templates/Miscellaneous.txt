@@ -12,17 +12,17 @@ Unholify me
 Not registered yet? Make an account
 
 ########## Above 21 page1 #############
-Hi!  
-What's your stress level today? ## 1 to 10 buttons on the next line, colout gradation preferable
+Hi!
+What's your stress level today? ## 1 to 10 buttons on the next line, colour gradation preferable
 How frequently do you drink now? ## buttons: occasionally a day/week/month
-## Submit button with some symbol (Materialize se utha)
+## Submit button with some symbol (Materialize se le)
 Cut the crap, book me a cab ## hyperlink
 
 ########## Above 21 page2 #############
 Congrats! ## centre align
 Keep it up ## a bit smaller than 'congrats'
 ## thoda space
-Party with us 
+Party with us
 Party responsibly ## small text; on a button.
 
 ########## Party location page #############
@@ -46,6 +46,5 @@ Pre-inform them:
 You were responsible today.
 (Congrats again btw)
 <br>
-Don't let addictions ruin you. 
+Don't let addictions ruin you.
 I'll always be a responsible person, dw ## button text, redirect to home page
-
