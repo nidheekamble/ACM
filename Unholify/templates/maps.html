@@ -1,4 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
+<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br> <br>
+<div class = "container valign">
+	<div class = "card blue-grey lighten-5 center-align hoverable">
+		<div class="row">
+			<div class = "card col s4">
+				<h4> {{ current_user.above_friend.query.all() }} </h4>
+			</div>
+			<div class = "card col s4">
+				<h4> {{ current_user.above_family.query.all() }} </h4>
+			</div>
+			<div class = "card col s4">
+				<h4> {{ current_user.above_colleague.query.all() }} </h4>
+			</div>
+		</div>
+		<h5> Inform them about your plan </h5>
+	</div>
+</div>
 
 {% endblock content %}

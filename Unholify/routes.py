@@ -144,4 +144,6 @@ def facts():
 @app.route("/TakeMeHome",methods=['POST','GET'])
 @login_required
 def cab():
-    return render_template('cab.html',title='Take Me Home')
+
+    aboveUser = AboveUser.query.filter_by(ID=current_user.ID).first()
+    return render_template('maps.html',title='Take Me Home', current_user = current_user)
