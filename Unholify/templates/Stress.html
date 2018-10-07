@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+{% extends "layout.html" %}
+{% block content %}
 <head>
 </head>
 	<!--Import materialize.css-->
@@ -8,10 +10,6 @@
 	</head>
 
 	<body>
-
-	<div class = "valign card-panel row blue-grey darken-4">
-		<span class = "white-text"> <h4 class = "center-align"> Blah Blah </h4></span>
-	</div>
 
 	<!--
 	<div class = "row valign ">
@@ -40,7 +38,8 @@
 	  </div>
 	-->
 	<br> <br>
-	  <div class = "transparent card-panel valign">
+	<div class = " container valign">
+	  <div class = "transparent card-panel blue-grey lighten-5 center-align">
 	  	<span class = "center-align">
 	  		<H2> <B>
 			Hey, hold on.
@@ -56,12 +55,14 @@
 			</h5>
 
 			<br>
-			<div class = "row">
-			<a class="waves-effect waves-light btn-large amber lighten-3" href = "{{ url_for('severeHelp') }}"> I'm just lonely </a> &nbsp&nbsp
-			<a class="waves-effect waves-light btn-large amber lighten-2" href = "{{ url_for('severeHelp') }}"> I am suicidal. That is my excuse. </a> &nbsp&nbsp
-			<a class="waves-effect waves-light btn-large amber" href = "{{ url_for('moderateHelp') }}"> I don't care, it's just normal stress</a>
-			</div>
 
+			<div class = "row">
+			<a class="waves-effect waves-light btn-large amber lighten-3 black-text" href = "{{ url_for('severeHelp') }}"> I'm just lonely </a> &nbsp&nbsp
+			<a class="waves-effect waves-light btn-large amber lighten-2 black-text" href = "{{ url_for('severeHelp') }}"> I am suicidal. That is my excuse. </a> &nbsp&nbsp
+			<a class="waves-effect waves-light btn-large amber black-text" href = "{{ url_for('moderateHelp') }}"> I don't care, it's just normal stress</a>
+			</div>
+		</div>
+	</div>
 		</span>
 
 
@@ -70,4 +71,5 @@
   <script type="text/javascript" src="static/js/materialize.min.js"></script>
 </body>
 </html>
+{% endblock content %}
 		

@@ -1,23 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
+<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<img class="responsive-img" src="static/party.png"> <br>
+<div class = "container valign transparent"> 
+	<h3 class = "center-align"> <b>btw, just a reminder</b></h3>
+	<br>
+	<div class = "transparent content-section card center-align amber lighten-5 hoverable">
 
-<div class = "content-section card">
+		<h5> You know the <b>ill effects </b> of alcohol:</h5>
+		<h4> <u> Immediate</u> changes in the brain, heart, liver (bad changes)</h4>
+		<h6> And some long-term health complications if you’re drinking <b> toooo </b> much. (you never know when 'a bit' may become "too much" though, so just watch out)</p>
 
-<h2 align="center"> <b>IT'S OKAY NOT TO DRINK!  </b></h2>
+	</div>
 
-<hr>
+	<br>
 
-<p>Alcohol has wide-ranging effects in the body. Once it enters your system, it triggers immediate physiological changes in the brain, heart, and liver, among other organs. Over time, these changes can lead to long-term health complications if you’re drinking too much.</p>
+	<div class = "content-section card center-align amber lighten-5 hoverable">
 
-<p>Alcohol has a wide variety of effects. In the brain, it triggers the release of dopamine, a neurotransmitter that’s associated with pleasure and satisfaction. </p>
+		<h4> But you feel <b> HAPPY </b> when you drink, so why not, right? </h4>
+		<h5> Well lad, that's because brain triggers the release of dopamine, a neurotransmitter that’s associated with pleasure and satisfaction, when you consume alcohol. <br>
+		So you're under the <i> perception </i> of being happy. </h5>
 
-<p>Excessive alcohol use is responsible for 2.5 million years of potential life lost annually, or an average of about 30 years of potential life lost for each death. </p>
+		<i class="small material-icons center-align">thumbs_down</i>
 
-<p>Symptoms of acute alcohol withdrawal syndrome (AWS) include hallucinations, seizures, and, in severe cases, even death. People who are dependent on alcohol should seek medical assistance to stop drinking. </p>
+		<b> Alcohol Withdrawal Syndrome (AWS) :</b>
+		<h6> Hallucinations, seizures, even death. If you're dependent on alcohol, stop <a href = "{{ url_for ('severeHelp') }}"> now </a> </h6>
 
+		<h4> The "safe dose" isn't specified, but drink <b> minimally</b>, and <b> responsibly </b>. </h4>
 
-<h3 align="center"><b>Do not give up beginning is always the hardest. </b></h3>
-<br>
+		<br>
+		<a class="waves-effect waves-light btn-large red lighten-1 black-text" href = "{{ url_for('cab') }}"> I am a responsible adult. I understand. </a>
 
+	</div>
 </div>
 {% endblock content %}

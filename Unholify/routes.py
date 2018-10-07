@@ -110,15 +110,8 @@ def stresslevel():
     if form.validate_on_submit():
         current_user.stress_level=form.stress_level.data
         db.session.commit()
-<<<<<<< HEAD
         if current_user.stress_level < 4 :
             return redirect('congrats')
-=======
-        if current_user.stress_level > 5 :
-            return redirect('severeHelp')
-        elif current_user.stress_level > 0 :
-            return redirect('moderateHelp')
->>>>>>> 0f6112be5d6c428eb70d775d1e7e65cd1dceb11b
         else:
             return redirect('stress')
     return render_template('stresslevel.html',title='How are you feeling today',form=form)
@@ -126,14 +119,29 @@ def stresslevel():
 @app.route("/severeHelp",methods=['POST','GET'])
 @login_required
 def severeHelp():
-    return render_template('severeHelp.html',title='We are with you',form=form)
+    return render_template('severeHelp.html',title='We are with you')
 
 @app.route("/ModerateHelp",methods=['POST','GET'])
 @login_required
 def moderateHelp():
-    return render_template('moderateHelp.html',title='We are with you',form=form)
+    return render_template('moderateHelp.html',title='We are with you')
 
 @app.route("/stress",methods=['POST','GET'])
 @login_required
 def stress():
-    return render_template('stress.html',title='We are with you',form=form)
+    return render_template('stress.html',title='We are with you')
+
+@app.route("/partyResponsibly",methods=['POST','GET'])
+@login_required
+def partyResponsibly():
+    return render_template('congrats.html',title='Yay!')
+
+@app.route("/OneMoreThing",methods=['POST','GET'])
+@login_required
+def facts():
+    return render_template('facts.html',title='Freedom with responsibilities')
+
+@app.route("/TakeMeHome",methods=['POST','GET'])
+@login_required
+def cab():
+    return render_template('cab.html',title='Take Me Home')

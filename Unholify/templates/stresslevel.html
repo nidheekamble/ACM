@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+{% extends "layout.html" %}
+{% block content %}
+<head>
+</head>
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body>
+	<br><br>
+	<div class = "container valign">
+		<div class = "card grey blue-grey lighten-5 center-align">
+			<br><br>
+			<b><h1>hi!</h1></b>
+			<h5> Which of these best reflect your mood today? </h5><br>
+			<div class = "row center-align">
+				<h3> <b>
+				<i class="medium material-icons">mood_bad</i>
+
+				<div class = "hoverable col s1 card-panel red darken-4">1</div>
+				<div class = "hoverable col s1 card-panel red darken-2">2</div>
+				<div class = "hoverable col s1 card-panel red">3</div>
+				<div class = "hoverable col s1 card-panel red lighten-2">4</div>
+				<div class = "hoverable col s1 card-panel red lighten-5">5</div>
+				<div class = "hoverable col s1 card-panel light-green lighten-2">6</div>
+				<div class = "hoverable col s1 card-panel light-green">7</div>
+				<div class = "hoverable col s1 card-panel light-green darken-2">8</div>
+				<div class = "hoverable col s1 card-panel light-green darken-4">9</div>
+				 <i class="medium material-icons">mood</i>
+				</b>
+				</h3>
+
+			<div class="content-section">
+				<form method="POST" action="">
+					{{ form.hidden_tag() }}
+						<div class="form-group">
+							<h5> </b>Enter your stress level: <b></h5>
+								{{ form.above_stress(class="form-control form-control-lg") }}
+						</div> 			</div>
+				</form>
+				<hr>
+			</div>
+			<br><br>
+		</div>
+	</div>
+
+</body>
+</html>
+{% endblock content %}

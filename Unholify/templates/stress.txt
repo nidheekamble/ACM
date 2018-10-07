@@ -67,15 +67,19 @@ It's doctors, surveys, experiences who dissuade you: DON'T fall into this vortex
 
 So what should I do then? ## heading
 
-Try alternatives.
-Play a sport. Take a walk. Talk to someone. Catch up with old friends.
-Don't like socialising? Listen to a song.
-Not interested in music? Watch TV.
-Not an enterntainment person? Pursue a hobby.
-Do what your passion tells you to (not drinking, so that's not an answer).
+<h6> Try alternatives. </h6>
+<h3> Play a sport.Take a walk. </h3>
+<h5>Talk to someone.</h5>
+<h7> Catch up with old friends. <h7>
+<h4> Don't like socialising? Listen to a song. <br>
+Not interested in music? Watch TV. </h4>
+<h6> Not an entertainment person? Pursue a hobby. </h6>
+<h2> Do what your passion tells you to </h2> <h4> (not drinking, so that's not an answer). </h4>
 
-We're proud of you for accepting your reason.
-But never let it overpower you.
+<h2>
+We're proud of you for accepting your reason. <br>
+<b>But never let it overpower you.</b> 
+</h2>
 
 Alcohol is never the answer. Neither are any of the drugs.
 

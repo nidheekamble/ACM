@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
+{% extends "layout.html" %}
+{% block content %}
 <head>
 </head>
 	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href=" url_for('static', filename='css/materialize.min.css')" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
 	
 	</head>
 
 	<body>
-
-	<div class = "valign card-panel row blue-grey darken-4">
-		<span class = "white-text"> <h4 class = "center-align"> Blah Blah </h4></span>
-	</div>
 
 	<!--
 	<div class = "row valign ">
@@ -40,11 +38,12 @@
 	  </div>
 	-->
 	<br> <br>
-	<div class = "container col s12 transparent valign hoverable">
+	<div class = "container col s12 transparent valign">
 		<span class = "center-align">
-			<div class = "card-panel col s7 hoverable">
+			<div class = "card-panel col s7 hoverable blue-grey lighten-5">
 				<h2><b>You're not alone! </b><br>
 				Never alone. </h2>
+				<i class="medium material-icons center-align">sentiment_very_satisfied</i>
 
 				<h5><br>
 					Pick up a phone, talk to your friends. <br>
@@ -55,6 +54,7 @@
 				</h5>
 			</div>
 
+			<img class="responsive-img hoverable" src="static/severe.png"> <br>
 				<div class = "hoverable card-panel"> <h5>
 					If you think your situation IS extreme,
 					you can also choose to call <h3> <b> suicide prevention helplines </b> </h3> <br>
@@ -68,36 +68,36 @@
 				</div>
 
 
-			<div class = "card-panel col s9 hoverable">
+			<div class = "card-panel col s9 hoverable blue-grey lighten-5">
 				<h4> 
 					Want someone to vent to?<br>
 					Listen to? <br>
 					Talk to? <br>
-					We've some <b> wonderful sites </b> for you: <br>  </h4>
+					We've some <i> wonderful sites </i> for you: <br>  </h4>
 					<ul> <h5>
 						<li><a href = "https://www.befrienders.org/"> <b> https://www.befrienders.org/ </b></a>(a specially dedicated website) ## aise hi comment </li>
 						<li><a href = "https://www.betterhelp.com/"><b> https://www.betterhelp.com/ </b></a></li>
-						<li><a href = "https://www.7cups.com/"><b> https://www.7cups.com/</b></a> (this one is really nice) </li>
+						<li><a href = "https://www.7cups.com/"><b> https://www.7cups.com/</b></a> (we really liked this one) </li>
 					</h5>
 					</ul>
 					<br>
 				</h5>
 			</div>
-		</span>
-	</div>
 
-
-	Meditate. Cry. Introspect.
-	Talk to your family. Friends. Colleagues. Anyone.
-	Speak up. You're valued, you're loved. Don't end it here.
-
-	They do help. Give it a try.
-	We're proud of you, hold on. Alcohol is never an option.
-
+			<div class = "card hoverable center-align">
+				<h3>Meditate. Cry. <b> Introspect. Seek help. </b> </h3>
+				<h6>Talk to your <b>family</b>. Friends. Colleagues. <b>Anyone.</b>
+				<h3> Speak up.</h3> <h4>You're valued, you're loved. <i class="small material-icons center-align">favorite</i></h4> Don't end it here.
+				They do help. Give it a try.</h6>
+				</b>
+				<h5><b>We're proud of you, hold on.</b> Alcohol is never an option. </h5>
+				</div>
+					</span>
+			</div>
 
 	<!--JavaScript at end of body for optimized loading-->
 
   <script type="text/javascript" src="static/js/materialize.min.js"></script>
 </body>
 </html>
-		
+{% endblock content %}
