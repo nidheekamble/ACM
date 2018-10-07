@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class = "container valign">
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
+            <fieldset class="form-group center-align">
                 <legend class="border-bottom mb-4">Join Today</legend>
 
                 <div class="form-group">
@@ -60,11 +61,13 @@
                         {{ form.above_colleague(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                
-            </fieldset>
-            <div class="form-group">
+
+                 <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
+                
+            </fieldset>
+           
 
         </form>
     </div>
