@@ -29,16 +29,15 @@ def register():
             a = ord(char) #ASCII
             s = s+a #sum of ASCIIs acts as the salt
         hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
-        user = User( email= form.email.data , password= hashed_password, type= form.type.data )
+        user = User( email= form.email.data , password= hashed_password )
         db.session.add(user)
         db.session.commit()
         flash(f'Success! Please fill in the remaining details', 'success')
-        if form.type.data == 'A':
-            flash(f'Success! Please fill in the remaining details', 'success')
-            return redirect(url_for('registerAbove'))
+        #if form.type.data == 'A':
+            #flash(f'Success! Please fill in the remaining details', 'success')
+        return redirect(url_for('registerAbove'))
 
-        elif form.type.data == 'B':
-            return redirect(url_for('login'))
+        ##return redirect(url_for('login'))
     else: print('halaaaa')
     return render_template('selectForm.html', form=form)
 
@@ -47,7 +46,8 @@ def registerAbove():
     form = RegistrationFormAbove()
     if form.validate_on_submit():
         print('TF')
-        aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0,user_id=current_user.id)
+
+        aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0)
 
         db.session.add(aboveUser)
         db.session.commit()
@@ -84,26 +84,26 @@ def logout():
 @app.route("/account", methods= ['POST', 'GET'])
 @login_required
 def account():
-    if current_user.type == 'A':
-        form = UpdateAccountFormAboveUser()
-        aboveUser = AboveUser.query.filter_by(user_id=current_user.id).first()
-        if form.validate_on_submit():
-            current_user.email = form.email.data
-            aboveUser.above_type=form.above_type.data
-            aboveUser.above_address=form.above_address.data
-            aboveUser.above_friend=form.above_friend.data
-            aboveUser.above_family=form.above_family.data
-            aboveUser.above_colleague=form.above_colleague.data
-            db.session.commit()
-            flash('Your account has been updated!', 'success')
-            return redirect(url_for('account'))
-        elif request.method == 'GET':
-            form.email.data=current_user.email
-            form.above_type.data=aboveUser.above_type
-            form.above_address.data=aboveUser.above_address
-            form.above_friend.data=aboveUser.above_friend
-            form.above_family.data=aboveUser.above_family
-            form.above_colleague.data=aboveUser.above_colleague
+
+    form = UpdateAccountFormAboveUser()
+    aboveUser = AboveUser.query.filter_by(user_id=current_user.id).first()
+    if form.validate_on_submit():
+        current_user.email = form.email.data
+        aboveUser.above_type=form.above_type.data
+        aboveUser.above_address=form.above_address.data
+        aboveUser.above_friend=form.above_friend.data
+        aboveUser.above_family=form.above_family.data
+        aboveUser.above_colleague=form.above_colleague.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.email.data=current_user.email
+        form.above_type.data=aboveUser.above_type
+        form.above_address.data=aboveUser.above_address
+        form.above_friend.data=aboveUser.above_friend
+        form.above_family.data=aboveUser.above_family
+        form.above_colleague.data=aboveUser.above_colleague
     return render_template('UpdateAccountAboveUser.html', title='Account', form=form)
 
 @app.route("/stresslevel",methods=['POST','GET'])
@@ -120,4 +120,3 @@ def stresslevel():
         else:
             flash('You have found your way to a stress and alcohol free life','success')
     return render_template('Stress.html',title='How are you feeling today',form=form)
-
