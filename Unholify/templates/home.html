@@ -1,61 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
-      
- 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Home Page</title>
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection"/>
+	
 </head>
-<style>
-     body {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-      }
-
-      main {
-        flex: 1 0 auto;
-      }
-  </style>
 
 <body>
 
-     <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">Unholify</a>
-          </div>
-        </nav>
-      </div>
+	<div class = "valign card-panel row blue-grey darken-4">
+		<span class = "white-text"> <h4 class = "center-align"> <b>Unholify </h4></span>
+	</div>
 
-     
-        <div class="valign-wrapper row">
-          
-            <div class="center-align card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">Unholify me</span>
+               
+            <div class="center-align card white darken-1">
+              <div class="card-content blue-grey-text">
+                <span class="card-title"><h5>Unholify me</h5></span>
                   <p>I am a very simple card. I am good at containing small bits of information.
                    I am convenient because I require little markup to use effectively.</p>
               </div>
+
               <div class="card-action">
                 <div class="center-align">
-                 <a href="{{ url_for('login') }}">Login</a>
+                 <a href="{{ url_for('login') }}"><b>Login<b></a>
                 </div>
               </div>
             </div>
-          </span>
-        </div> 
-        <div class="row">
+         </div>
+      
         
-            <div class="center-align card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">Not registered yet? Make an account</span>
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                   I am convenient because I require little markup to use effectively.</p>
+            <div class="center-align card white darken-1">
+              <div class="card-content blue-grey-text">
+                <span class="card-title"><b><h5>Not registered yet? Make an account</h5></span>
               </div>
               <div class="card-action">
                 <div class="center-align">
@@ -63,9 +40,8 @@
                 </div>
               </div>
             </div>
-          </span>
-        </div> 
-
+          </div>
+        
 
       <footer class="page-footer fixed">
                 <div class="container">
