@@ -121,7 +121,7 @@ def account():
 @login_required
 def stresslevel():
     form = StressForm()
-    if form.validate_on_submit()
+    if form.validate_on_submit():
         current_user.stress_level=form.stress_level.data
         db.session.commit()
         if current_user.stress_level > 5 :
