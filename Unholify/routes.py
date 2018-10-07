@@ -2,7 +2,7 @@ import os
 import secrets
 from Unholify import app, db
 from flask import Flask, session, escape, render_template, url_for, flash, redirect, request
-from Unholify.forms import RegistrationFormAbove,StressForm,UpdateAccountFormAboveUser,LoginForm, SelectForm
+from Unholify.forms import RegistrationFormAbove,StressForm,UpdateAccountFormAboveUser,LoginForm,SelectForm
 from Unholify.models import User, AboveUser
 import hashlib #for SHA512
 from flask_login import login_user, current_user, logout_user, login_required
@@ -23,43 +23,32 @@ def register():
     if form.validate_on_submit():
         if current_user.is_authenticated:
             return redirect(url_for('home'))
+        pw = (form.password.data)
+        s = 0
+        for char in pw:
+            a = ord(char) #ASCII
+            s = s+a #sum of ASCIIs acts as the salt
+        hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
+        user = User( email= form.email.data , password= hashed_password, type= form.type.data )
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Success! Please fill in the remaining details', 'success')
         if form.type.data == 'A':
-            if form.validate_on_submit():
-                pw = (form.password.data)
-                s = 0
-                for char in pw:
-                    a = ord(char) #ASCII
-                    s = s+a #sum of ASCIIs acts as the salt
-                hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
-                user = User( email= form.email.data , password= hashed_password, type= form.type.data )
-                db.session.add(user)
-                db.session.commit()
-                flash(f'Success! Please fill in the remaining details', 'success')
+            flash(f'Success! Please fill in the remaining details', 'success')
             return redirect(url_for('registerAbove'))
 
         elif form.type.data == 'B':
-            if form.validate_on_submit():
-                pw = (form.password.data)
-                s = 0
-                for char in pw:
-                   a = ord(char) #ASCII
-                   s = s+a #sum of ASCIIs acts as the salt
-                hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
-                form2 = StressForm()
-                user = User(email=form.email.data, password=hashed_password, type= form.type.data)
-                db.session.add(user)
-                db.session.commit()
             return redirect(url_for('login'))
     else: print('halaaaa')
-    return render_template('selectForm.html', form2=form2, form=form)
+    return render_template('selectForm.html', form=form)
 
 @app.route("/registerAbove", methods=['GET', 'POST'])
 def registerAbove():
     form = RegistrationFormAbove()
-    form2= StressForm()
     if form.validate_on_submit():
+        print('TF')
         aboveUser=AboveUser(above_type=form.above_type.data,above_friend=form.above_friend.data,above_colleague=form.above_colleague,above_drunktimes=0,user_id=current_user.id)
-        user=User.query.filter_by
+
         db.session.add(aboveUser)
         db.session.commit()
     else: print('halaaa 1')
@@ -127,7 +116,8 @@ def stresslevel():
         if current_user.stress_level > 5 :
             return redirect('severeHelp.html',title='We are with you',form=form)
         elif current_user.stress_level > 0 :
-            return redirect('congrats.html',title='Keep it up',form=form)
+            return redirect('ModerateHelp.html',title='We are with you',form=form)
         else:
             flash('You have found your way to a stress and alcohol free life','success')
     return render_template('Stress.html',title='How are you feeling today',form=form)
+
