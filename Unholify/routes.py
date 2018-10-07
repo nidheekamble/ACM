@@ -111,15 +111,9 @@ def stresslevel():
         current_user.stress_level=form.stress_level.data
         db.session.commit()
         if current_user.stress_level > 5 :
-<<<<<<< HEAD
             return redirect('severeHelp')
         elif current_user.stress_level > 0 :
             return redirect('moderateHelp')
-=======
-            return render_template('severeHelp.html',title='We are with you',form=form)
-        elif current_user.stress_level > 0 :
-            return render_template('ModerateHelp.html',title='We are with you',form=form)
->>>>>>> 04f354229ab0b8b9cb0a84c5e9ee36c9d97193de
         else:
             flash('You have found your way to a stress and alcohol free life','success')
     return render_template('Stress.html',title='How are you feeling today',form=form)
