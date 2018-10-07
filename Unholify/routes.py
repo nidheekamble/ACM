@@ -127,7 +127,7 @@ def stresslevel():
         if current_user.stress_level > 5 :
             return redirect('severeHelp.html',title='We are with you',form=form)
         elif current_user.stress_level > 0 :
-            return redirect('ModerateHelp.html',title='We are with you',form=form)
+            return redirect('congrats.html',title='Keep it up',form=form)
         else:
             flash('You have found your way to a stress and alcohol free life','success')
     return render_template('Stress.html',title='How are you feeling today',form=form)
