@@ -60,23 +60,12 @@
                         {{ form.above_colleague(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
-                <div class="form-group">
-                    {{ form.above_submit.label(class="form-control-label") }}
-                    {% if form.above_submit.errors %}
-                        {{ form.above_submit(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.above_submit.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.above_submit(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-
+                
             </fieldset>
-            
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+
         </form>
     </div>
     <div class="border-top pt-3">
