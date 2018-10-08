@@ -20,8 +20,9 @@ def home():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form= SelectForm()
+    print('Outside if')
     if form.validate_on_submit():
-       
+        print('Inside if')
         pw = (form.password.data)
         s = 0
         for char in pw:
@@ -30,7 +31,10 @@ def register():
         hashed_password = (str)((hashlib.sha512((str(s).encode('utf-8'))+((form.password.data).encode('utf-8')))).hexdigest())
         user = User( email= form.email.data , password= hashed_password )
         db.session.add(user)
+        print(user.id)
         db.session.commit()
+        print(user.email)
+
         print('toilet')
         flash(f'Success! Please fill in the remaining details', 'success')
         #if form.type.data == 'A':
@@ -145,7 +149,8 @@ def facts():
 @login_required
 def cab():
     user= User.query.filter_by(id=current_user.id).first()
-    aboveUser = AboveUser.query.filter_by(id=current_user.id).all()
+    print(user.id)
+    aboveUser = AboveUser.query.filter_by(id=user.id).first()
     print('after abv')
     print(aboveUser.above_family)
     return render_template('maps.html',title='Take Me Home', aboveUser=aboveUser)
