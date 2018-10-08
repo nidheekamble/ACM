@@ -21,8 +21,7 @@ def home():
 def register():
     form= SelectForm()
     if form.validate_on_submit():
-        if current_user.is_authenticated:
-            return redirect(url_for('home'))
+       
         pw = (form.password.data)
         s = 0
         for char in pw:
@@ -32,6 +31,7 @@ def register():
         user = User( email= form.email.data , password= hashed_password )
         db.session.add(user)
         db.session.commit()
+        print('toilet')
         flash(f'Success! Please fill in the remaining details', 'success')
         #if form.type.data == 'A':
             #flash(f'Success! Please fill in the remaining details', 'success')
@@ -145,5 +145,12 @@ def facts():
 @login_required
 def cab():
     user= User.query.filter_by(id=current_user.id).first()
-    aboveUser = AboveUser.query.filter_by(id=user.id).first()
+    aboveUser = AboveUser.query.filter_by(id=current_user.id).all()
+    print('after abv')
+    print(aboveUser.above_family)
     return render_template('maps.html',title='Take Me Home', aboveUser=aboveUser)
+
+@app.route("/staySafe",methods=['POST','GET'])
+@login_required
+def closing():
+    return render_template('closing.html',title='Stay Safe')

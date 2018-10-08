@@ -7,17 +7,30 @@
 	<div class = "card blue-grey lighten-5 center-align hoverable">
 		<div class="row">
 			<div class = "card col s4">
-				<h4> {{ aboveUser.above_friend }} </h4>
+				<h5> <b> {{ aboveUser.above_friend }} </b>(Friend) </h5> 
 			</div>
+			&nbsp
 			<div class = "card col s4">
-				<h4> {{ aboveUser.above_family }} </h4>
+				<h5> <b> {{ aboveUser.above_family }} </b> (Family) </h5>
 			</div>
+			&nbsp
 			<div class = "card col s4">
-				<h4> {{ aboveUser.above_colleague }} </h4>
+				<h5> <b> {{ aboveUser.above_colleague }} </b> (Colleague) </h5>
 			</div>
+			&nbsp
 		</div>
-		<h5> <href='Inform them about your plan'> </h5>
+		<h5> <a href="https://www.gmail.com"> Let them know </a> <br>
+		(manners, right?)</h5>
 	</div>
+
+	<div class = "card blue-grey lighten-5 center-align hoverable col s9">
+		<a href = "https://book.olacabs.com/?utm_source=book_now_top_right"><h5><b>Book an Ola</b></h5></a>
+	</div>
+
+	<div class = "card blue-grey lighten-5 center-align hoverable col s5">
+		<a href = "{{ url_for('closing') }}"><h5><b>Done, thanks!</b></h5></a>
+	</div>
+
 </div>
 
 {% endblock content %}

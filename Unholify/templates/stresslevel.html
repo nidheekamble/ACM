@@ -39,14 +39,16 @@
 						<div class="form-group">
 							<h5> </b>Enter your stress level: <b></h5>
 								{{ form.above_stress(class="form-control form-control-lg") }}
+								<div class="form-group">
+					                {{ form.submit(class="btn btn-outline-info") }}
+					            </div>
 						</div> 
 					</div>
-			<div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
-            </div>
+			
 				</form>
 				<hr>
 			</div>
+			<a class="waves-effect waves-light btn-large amber lighten-3 black-text" href = "{{ url_for('cab') }}">Cut the crap, book me a cab </a>
 			<br><br>
 		</div>
 	</div>
