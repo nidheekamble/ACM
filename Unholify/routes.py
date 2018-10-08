@@ -85,7 +85,7 @@ def logout():
 def account():
 
     form = UpdateAccountFormAboveUser()
-    aboveUser = AboveUser.query.filter_by(user_id=current_user.id).first()
+    aboveUser = AboveUser.query.filter_by(id=current_user.id).first()
     if form.validate_on_submit():
 
         aboveUser.above_type=form.above_type.data
