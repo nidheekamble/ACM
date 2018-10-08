@@ -30,7 +30,7 @@ class RegistrationFormAbove(FlaskForm):
 
 class StressForm(FlaskForm):
     above_stress=IntegerField('On the scale of 1 to 10, how stressed do you feel at the moment, 10 being the most?',validators=[DataRequired(),NumberRange(min=1, max= 10)])
-
+    submit=SubmitField('Yeah,Thats me')
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])

@@ -108,7 +108,7 @@ def account():
 def stresslevel():
     form = StressForm()
     if form.validate_on_submit():
-        current_user.stress_level=form.stress_level.data
+        current_user.stress_level=form.above_stress.data
         db.session.commit()
         if current_user.stress_level < 4 :
             return redirect('congrats')
@@ -144,6 +144,6 @@ def facts():
 @app.route("/TakeMeHome",methods=['POST','GET'])
 @login_required
 def cab():
-
-    aboveUser = AboveUser.query.filter_by(ID=current_user.ID).first()
-    return render_template('maps.html',title='Take Me Home', current_user = current_user)
+    user= User.query.filter_by(id=current_user.id).first()
+    aboveUser = AboveUser.query.filter_by(id=user.id).first()
+    return render_template('maps.html',title='Take Me Home', aboveUser=aboveUser)
