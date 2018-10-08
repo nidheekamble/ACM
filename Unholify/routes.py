@@ -111,7 +111,7 @@ def stresslevel():
         current_user.stress_level=form.above_stress.data
         db.session.commit()
         if current_user.stress_level < 4 :
-            return redirect('congrats')
+            return redirect('partyResponsibly')
         else:
             return redirect('stress')
     return render_template('stresslevel.html',title='How are you feeling today',form=form)
